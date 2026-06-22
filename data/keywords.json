@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "seed_keyword": "台中牙醫",
+    "country": "tw",
+    "analysis_date": "2026-06-21",
+    "source": "Ahrefs Keywords Explorer"
+  },
+  "seed": {
+    "keyword": "台中牙醫",
+    "volume": 700,
+    "difficulty": 56,
+    "cpc": null,
+    "clicks": 428,
+    "traffic_potential": 900,
+    "parent_topic": "康橋牙醫",
+    "global_volume": 700,
+    "intents": {
+      "informational": true,
+      "commercial": true,
+      "local": true,
+      "navigational": false,
+      "transactional": false,
+      "branded": false
+    },
+    "serp_features": ["paid_top", "local_pack", "paid_bottom", "paid_sitelink", "video_th"]
+  },
+  "related_keywords": [
+    {
+      "keyword": "台中牙醫推薦",
+      "volume": 800,
+      "difficulty": 33,
+      "cpc": null,
+      "traffic_potential": 1300,
+      "priority": "HIGH",
+      "note": "最佳性價比目標詞，KD低流量潛力最高"
+    },
+    {
+      "keyword": "台中牙醫診所推薦",
+      "volume": 100,
+      "difficulty": 24,
+      "cpc": null,
+      "traffic_potential": 900,
+      "priority": "HIGH",
+      "note": "KD最低(24)，低競爭高性價比"
+    },
+    {
+      "keyword": "牙醫推薦台中",
+      "volume": 200,
+      "difficulty": 39,
+      "cpc": 50,
+      "traffic_potential": 900,
+      "priority": "HIGH",
+      "note": "CPC=50，可搭配廣告投放"
+    },
+    {
+      "keyword": "台中兒童牙醫",
+      "volume": 200,
+      "difficulty": 0,
+      "cpc": 45,
+      "traffic_potential": 600,
+      "priority": "NICHE",
+      "note": "KD=0藍海，利基市場"
+    },
+    {
+      "keyword": "台中牙醫推薦蛀牙",
+      "volume": 100,
+      "difficulty": 0,
+      "cpc": null,
+      "traffic_potential": 40,
+      "priority": "NICHE",
+      "note": "症狀型長尾，KD=0"
+    },
+    {
+      "keyword": "台中兒童牙醫推薦ptt",
+      "volume": 100,
+      "difficulty": 0,
+      "cpc": null,
+      "traffic_potential": 10,
+      "priority": "SOCIAL",
+      "note": "社群口碑型，PTT意圖"
+    },
+    {
+      "keyword": "台中牙醫診所",
+      "volume": 150,
+      "difficulty": 54,
+      "cpc": 60,
+      "traffic_potential": 800,
+      "priority": "MONITOR",
+      "note": "CPC最高(60)，高競爭注意"
+    },
+    {
+      "keyword": "台中 牙醫",
+      "volume": 100,
+      "difficulty": 46,
+      "cpc": 70,
+      "traffic_potential": 1200,
+      "priority": "MONITOR",
+      "note": "主詞小變體，CPC=70最高"
+    },
+    {
+      "keyword": "台中全口重建 康橋牙醫",
+      "volume": 1000,
+      "difficulty": 0,
+      "cpc": null,
+      "traffic_potential": 600,
+      "priority": "COMPETITOR_BRAND",
+      "note": "競爭者品牌詞，搜尋量最高"
+    }
+  ]
+}
