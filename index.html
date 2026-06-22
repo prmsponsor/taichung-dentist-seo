@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台中牙醫 SEO 競爭分析報告 2026</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2128;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --accent3: #f78166;
+    --accent4: #d2a8ff;
+    --accent5: #ffa657;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --text-muted: #484f58;
+    --glow: rgba(88,166,255,0.15);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0 0;
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .badge-ahrefs { color: var(--accent5); border-color: var(--accent5); background: rgba(255,166,87,0.1); }
+  .badge-date { color: var(--text-dim); border-color: var(--border); }
+  .badge-tw { color: var(--accent2); border-color: var(--accent2); background: rgba(63,185,80,0.1); }
+
+  h1 {
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  h1 span { color: var(--accent); }
+
+  .nav-tabs {
+    display: flex;
+    gap: 0;
+    margin-top: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    padding: 10px 18px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text-dim);
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* METRIC CARDS */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+  }
+  .metric-card.blue::before { background: var(--accent); }
+  .metric-card.green::before { background: var(--accent2); }
+  .metric-card.orange::before { background: var(--accent5); }
+  .metric-card.purple::before { background: var(--accent4); }
+  .metric-card.red::before { background: var(--accent3); }
+
+  .metric-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .metric-value { font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
+  .metric-value.accent { color: var(--accent); }
+  .metric-value.green { color: var(--accent2); }
+  .metric-value.orange { color: var(--accent5); }
+  .metric-sub { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+
+  /* SECTION HEADERS */
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SERP FEATURE PILLS */
+  .serp-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .serp-pill {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .serp-pill.active { color: var(--accent2); border-color: var(--accent2); background: rgba(63,185,80,0.08); }
+  .serp-pill.inactive { color: var(--text-muted); border-color: var(--border); }
+
+  /* TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+  .data-table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--surface2);
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .data-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .data-table tr:hover td { background: var(--surface2); }
+
+  .rank-badge {
+    display: inline-block;
+    width: 24px; height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  .rank-badge.top3 { background: rgba(88,166,255,0.15); border-color: var(--accent); color: var(--accent); }
+
+  .dr-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dr-track {
+    width: 60px; height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .dr-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent);
+  }
+
+  .traffic-num { font-weight: 700; color: var(--accent2); font-variant-numeric: tabular-nums; }
+  .url-link { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .url-link:hover { text-decoration: underline; }
+  .clinic-name { font-weight: 600; color: var(--text); }
+  .positioning { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .tag-third { color: var(--accent5); font-size: 10px; border: 1px solid var(--accent5); padding: 1px 6px; border-radius: 10px; }
+
+  /* KEYWORD TABLE */
+  .kd-pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .kd-low { background: rgba(63,185,80,0.15); color: var(--accent2); }
+  .kd-mid { background: rgba(255,166,87,0.15); color: var(--accent5); }
+  .kd-high { background: rgba(247,129,102,0.15); color: var(--accent3); }
+
+  .priority-star { color: var(--accent5); font-size: 12px; }
+  .priority-niche { color: var(--accent4); font-size: 12px; }
+
+  /* OPPORTUNITY CARDS */
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .opp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+  }
+  .opp-card:hover { border-color: var(--accent); }
+  .opp-num {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  .opp-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .opp-body { font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+  .opp-tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .opp-tag.blue { background: rgba(88,166,255,0.12); color: var(--accent); }
+  .opp-tag.green { background: rgba(63,185,80,0.12); color: var(--accent2); }
+  .opp-tag.orange { background: rgba(255,166,87,0.12); color: var(--accent5); }
+  .opp-tag.purple { background: rgba(210,168,255,0.12); color: var(--accent4); }
+
+  /* ACTION LIST */
+  .action-list { list-style: none; }
+  .action-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .action-item:last-child { border-bottom: none; }
+  .action-num {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .action-content {}
+  .action-title { font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 4px; }
+  .action-desc { font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+
+  /* CHART BAR */
+  .bar-chart { margin-bottom: 32px; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  .bar-label { width: 160px; flex-shrink: 0; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar-track { flex: 1; height: 20px; background: var(--surface2); border-radius: 3px; overflow: hidden; position: relative; }
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--bg);
+    transition: width 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .bar-val { width: 60px; text-align: right; color: var(--text); font-variant-numeric: tabular-nums; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .metric-grid { grid-template-columns: 1fr 1fr; }
+    .opp-grid { grid-template-columns: 1fr; }
+    .data-table { font-size: 12px; }
+    .data-table th, .data-table td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <span class="badge badge-ahrefs">Ahrefs</span>
+      <span class="badge badge-tw">🇹🇼 台灣 tw</span>
+      <span class="badge badge-date">2026-06-21</span>
+    </div>
+    <h1>台中牙醫 <span>SEO 競爭分析報告</span></h1>
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="overview">概況總覽</button>
+      <button class="tab-btn" data-tab="serp">SERP 競爭者</button>
+      <button class="tab-btn" data-tab="keywords">關鍵字矩陣</button>
+      <button class="tab-btn" data-tab="opportunities">差異化機會</button>
+      <button class="tab-btn" data-tab="actions">行動建議</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ===== TAB: 概況總覽 ===== -->
+  <div class="tab-panel active" id="tab-overview">
+
+    <div class="metric-grid">
+      <div class="metric-card blue">
+        <div class="metric-label">月搜尋量</div>
+        <div class="metric-value accent">700</div>
+        <div class="metric-sub">次/月 · 台灣地區</div>
+      </div>
+      <div class="metric-card orange">
+        <div class="metric-label">KD 難度</div>
+        <div class="metric-value orange">56</div>
+        <div class="metric-sub">中高競爭 (0–100)</div>
+      </div>
+      <div class="metric-card green">
+        <div class="metric-label">流量潛力</div>
+        <div class="metric-value green">900</div>
+        <div class="metric-sub">Traffic Potential/月</div>
+      </div>
+      <div class="metric-card blue">
+        <div class="metric-label">實際點擊數</div>
+        <div class="metric-value accent">428</div>
+        <div class="metric-sub">Clicks/月 · 61% CTR</div>
+      </div>
+      <div class="metric-card purple">
+        <div class="metric-label">Parent Topic</div>
+        <div class="metric-value" style="font-size:16px;color:var(--accent4)">康橋牙醫</div>
+        <div class="metric-sub">搜尋量最大品牌</div>
+      </div>
+      <div class="metric-card red">
+        <div class="metric-label">最高 DR 競爭者</div>
+        <div class="metric-value" style="font-size:22px;color:var(--accent3)">33</div>
+        <div class="metric-sub">寬庭牙醫 (qdosmile)</div>
+      </div>
+    </div>
+
+    <div class="section-title">SERP 特徵分析</div>
+    <div class="serp-features">
+      <span class="serp-pill active">✅ Local Pack 本地地圖包</span>
+      <span class="serp-pill active">✅ Paid Top 付費廣告（頂部）</span>
+      <span class="serp-pill active">✅ Paid Bottom 付費廣告（底部）</span>
+      <span class="serp-pill active">✅ Video Thumbnails 影片縮圖</span>
+      <span class="serp-pill active">✅ Question Box 相關問題</span>
+      <span class="serp-pill inactive">❌ AI Overview（未觸發）</span>
+    </div>
+
+    <div class="section-title">競爭者流量分布</div>
+    <div class="bar-chart" id="traffic-chart"></div>
+
+    <div class="section-title">關鍵洞察</div>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <div class="opp-num">洞察 01</div>
+        <div class="opp-title">低 DR 也能排名</div>
+        <div class="opp-body">第一頁 DR 範圍僅 6～33，無大型醫療集團。秀谷牙醫 DR=7 卻排名第4，代表內容與在地口碑比反向連結更關鍵。</div>
+        <span class="opp-tag green">機會</span>
+      </div>
+      <div class="opp-card">
+        <div class="opp-num">洞察 02</div>
+        <div class="opp-title">第三方平台是最大威脅</div>
+        <div class="opp-body">best-doctor 僅靠 1 個反向連結就排第3，獲取 1,264 月流量。純靠頁面結構與長尾詞覆蓋，對單一診所構成持續壓力。</div>
+        <span class="opp-tag orange">威脅</span>
+      </div>
+      <div class="opp-card">
+        <div class="opp-num">洞察 03</div>
+        <div class="opp-title">Local Pack 是主戰場</div>
+        <div class="opp-body">AI Overview 未觸發，SERP 由 Local Pack 主導。Google 商家檔案（GBP）優化的 ROI 遠高於傳統 SEO 內容策略。</div>
+        <span class="opp-tag blue">策略</span>
+      </div>
+      <div class="opp-card">
+        <div class="opp-num">洞察 04</div>
+        <div class="opp-title">美學牙科獨佔高流量</div>
+        <div class="opp-body">寬庭牙醫的主要流量來自「台中 一日美齒」(4,600/月)，遠高於「台中牙醫」本詞。差異化定位帶來比主詞更大的流量池。</div>
+        <span class="opp-tag purple">啟示</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== TAB: SERP 競爭者 ===== -->
+  <div class="tab-panel" id="tab-serp">
+    <div class="section-title">第一頁競爭者詳情（Ahrefs 數據）</div>
+    <div style="overflow-x:auto">
+    <table class="data-table" id="serp-table">
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>診所 / 網站</th>
+          <th>DR</th>
+          <th>反向連結</th>
+          <th>月流量</th>
+          <th>主要流量詞</th>
+          <th>差異化定位</th>
+        </tr>
+      </thead>
+      <tbody id="serp-tbody"></tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ===== TAB: 關鍵字矩陣 ===== -->
+  <div class="tab-panel" id="tab-keywords">
+    <div class="section-title">關鍵字機會矩陣（Ahrefs Keywords Explorer）</div>
+    <div style="overflow-x:auto">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>關鍵字</th>
+          <th>月搜量</th>
+          <th>KD 難度</th>
+          <th>CPC (TWD)</th>
+          <th>流量潛力</th>
+          <th>優先等級</th>
+          <th>攻略備註</th>
+        </tr>
+      </thead>
+      <tbody id="kw-tbody"></tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- ===== TAB: 差異化機會 ===== -->
+  <div class="tab-panel" id="tab-opportunities">
+    <div class="section-title">差異化機會 Differentiation Opportunities</div>
+    <div class="opp-grid" id="diff-grid"></div>
+
+    <div class="section-title">內容缺口機會 Content Gap</div>
+    <div class="opp-grid" id="gap-grid"></div>
+  </div>
+
+  <!-- ===== TAB: 行動建議 ===== -->
+  <div class="tab-panel" id="tab-actions">
+    <div class="section-title">關鍵行動建議（優先順序）</div>
+    <ul class="action-list" id="action-list"></ul>
+  </div>
+
+</main>
+
+<footer>
+  資料來源：Ahrefs Keywords Explorer & SERP Overview ｜ 分析產出：Claude (Anthropic) ｜
+  <a href="https://github.com" target="_blank">GitHub</a> ·
+  <a href="data/serp-competitors.json" target="_blank">competitors.json</a> ·
+  <a href="data/keywords.json" target="_blank">keywords.json</a>
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────
+const competitors = [
+  { rank:1, name:"新世代牙醫診所", url:"https://newlydental.com/", dr:26, backlinks:313, traffic:1676, topKw:"新世代牙醫 (1,100)", pos:"老字號30年・20位醫師・週日看診", third:false },
+  { rank:2, name:"台中康橋牙醫診所", url:"https://c-dc.tw/", dr:29, backlinks:259, traffic:884, topKw:"康橋牙醫 (900)", pos:"顯微根管專家・院長近30年牙髓病經驗", third:false },
+  { rank:3, name:"best-doctor（第三方）", url:"https://www.best-doctor.com.tw/", dr:27, backlinks:1, traffic:1264, topKw:"牙醫推薦 (1,900)", pos:"排行榜平台・長尾詞覆蓋廣", third:true },
+  { rank:4, name:"秀谷牙醫診所", url:"https://shokunindent.com/", dr:7, backlinks:231, traffic:571, topKw:"秀谷牙醫 (200)", pos:"牙科難症・複雜轉診案例", third:false },
+  { rank:5, name:"京典美學牙醫", url:"https://mgdcsmile.com/", dr:29, backlinks:294, traffic:1055, topKw:"京典牙醫 (1,100)", pos:"藝術美學診所・榮總前主任駐診", third:false },
+  { rank:7, name:"台中長榮牙醫", url:"https://dentevergreen.com/", dr:15, backlinks:166, traffic:692, topKw:"長榮牙醫 (1,000)", pos:"在地口碑", third:false },
+  { rank:8, name:"澄美牙醫診所", url:"https://www.charmingsmiles-dentalclinic.com/", dr:6, backlinks:18, traffic:877, topKw:"澄美牙醫 (900)", pos:"一般綜合牙科", third:false },
+  { rank:9, name:"寬庭牙醫診所", url:"https://www.qdosmile.com/", dr:33, backlinks:266, traffic:1000, topKw:"台中一日美齒 (4,600)", pos:"一日美齒・美學牙科市場領導", third:false },
+  { rank:10, name:"璽瑞牙醫診所", url:"https://jadentclinic.com/", dr:11, backlinks:263, traffic:250, topKw:"璽瑞牙醫 (150)", pos:"南屯區全方位專科", third:false },
+];
+
+const keywords = [
+  { kw:"台中牙醫推薦", vol:800, kd:33, cpc:"N/A", tp:1300, priority:"⭐⭐⭐ 首先攻克", note:"最佳性價比目標詞" },
+  { kw:"台中牙醫診所推薦", vol:100, kd:24, cpc:"N/A", tp:900, priority:"⭐⭐⭐ 低競爭機會", note:"KD最低，高性價比" },
+  { kw:"牙醫推薦台中", vol:200, kd:39, cpc:"50", tp:900, priority:"⭐⭐⭐ 可投廣告", note:"CPC=50，可搭配廣告" },
+  { kw:"台中兒童牙醫", vol:200, kd:0, cpc:"45", tp:600, priority:"⭐⭐⭐⭐ 藍海利基", note:"KD=0，幾乎零競爭" },
+  { kw:"台中牙醫推薦蛀牙", vol:100, kd:0, cpc:"N/A", tp:40, priority:"⭐⭐⭐⭐ 長尾藍海", note:"症狀型長尾，KD=0" },
+  { kw:"台中兒童牙醫推薦ptt", vol:100, kd:0, cpc:"N/A", tp:10, priority:"⭐⭐⭐⭐ 社群口碑", note:"PTT意圖，社群信任" },
+  { kw:"台中牙醫", vol:700, kd:56, cpc:"N/A", tp:900, priority:"⭐⭐ 主詞監測", note:"主要目標詞，難度高" },
+  { kw:"台中牙醫診所", vol:150, kd:54, cpc:"60", tp:800, priority:"⭐⭐ 高競爭", note:"CPC最高(60)，注意" },
+  { kw:"台中 牙醫", vol:100, kd:46, cpc:"70", tp:1200, priority:"⭐ 主詞變體", note:"CPC=70，流量潛力高" },
+  { kw:"台中全口重建 康橋牙醫", vol:1000, kd:0, cpc:"N/A", tp:600, priority:"📌 競爭者品牌監測", note:"對手品牌詞，需追蹤" },
+];
+
+const diffOpps = [
+  { n:"01", title:"兒童牙科專頁 SEO", body:"「台中兒童牙醫」KD=0，月搜量200，第一頁無兒童牙科專門診所。建立獨立服務頁面即可突破，是最低成本的藍海機會。", tag:"藍海", tagClass:"green" },
+  { n:"02", title:"週日/假日牙醫定位", body:"僅新世代有明確主打，「台中週日牙醫」「台中假日牙醫」幾乎零競爭。若診所有此服務，建立專屬落地頁可快速搶佔。", tag:"快速勝利", tagClass:"blue" },
+  { n:"03", title:"費用透明化頁面", body:"所有競爭者均無清晰費用說明頁面。患者決策前高度依賴費用資訊，建立「植牙費用」「矯正費用」頁面可大幅提升轉換率。", tag:"轉換率", tagClass:"orange" },
+  { n:"04", title:"睡眠牙科/止鼾牙套", body:"僅京典美學有此服務頁面，競爭幾乎為零。睡眠呼吸中止是台灣成年人常見問題，是具差異化的高價值利基市場。", tag:"利基市場", tagClass:"purple" },
+  { n:"05", title:"PTT/Dcard 口碑整合", body:"「台中兒童牙醫推薦ptt」出現在關鍵字列表，社群信任度對看診決策影響大。主動建立社群口碑，也可提升未來 AI 工具引用機率。", tag:"社群", tagClass:"blue" },
+  { n:"06", title:"區域細分 Landing Page", body:"「台中北區牙醫推薦」「台中南屯牙醫推薦」等 KD 低的區域長尾詞目前多為第三方平台佔據，診所可建立在地化頁面搶奪。", tag:"在地SEO", tagClass:"green" },
+];
+
+const gapOpps = [
+  { n:"01", title:"「台中牙醫診所推薦」深度長文", body:"KD=24（最低），流量潛力900。建議製作 1,500 字以上推薦指南，嵌入 FAQ schema，是性價比最高的內容投資。", tag:"KD=24", tagClass:"green" },
+  { n:"02", title:"費用比較頁面", body:"植牙月搜量1,900+、隱適美2,400+。費用透明是患者最高頻的前置搜尋，所有競爭者都沒做好，是最明顯的內容缺口。", tag:"高需求", tagClass:"orange" },
+  { n:"03", title:"YouTube 衛教影片 SEO", body:"SERP 出現 Video Thumbnail 版位，但競爭者極少認真經營影片 SEO。可先行佈局「台中植牙流程」「顯微根管真相」等影片關鍵字。", tag:"影片機會", tagClass:"blue" },
+  { n:"04", title:"Google 商家檔案強化", body:"Local Pack 是「台中牙醫」最重要版位。每週發文、定期上傳照片（至少50張）、主動回覆評論是 Local SEO 基礎且最高 ROI 的動作。", tag:"GBP優先", tagClass:"orange" },
+  { n:"05", title:"全口重建/銀髮族照護指南", body:"「台中全口重建」月搜量1,000，KD=0。目前無診所針對銀髮族口腔照護做系統化內容，是高需求低競爭的藍海內容機會。", tag:"KD=0", tagClass:"green" },
+];
+
+const actions = [
+  { title:"強化 Google 商家檔案 (GBP)", desc:"Local Pack 是「台中牙醫」最重要曝光版位。每週至少發 2 篇貼文、上傳診所高品質照片（目標50張以上）、主動回覆每一則 Google 評論、新增各服務項目標籤。這是 ROI 最高的單一 SEO 動作。" },
+  { title:"製作「台中牙醫推薦」深度長文", desc:"目標詞月搜量800，KD=33（可攻克），流量潛力1,300（最高）。建議1,500字+，結構包含：如何選擇台中牙醫、各區域診所特色、各項治療推薦、FAQ schema（至少10題）。" },
+  { title:"建立費用透明頁面", desc:"所有競爭者均無清晰費用說明，是最明顯的內容缺口。分別製作「台中植牙費用」「台中矯正費用（含隱適美）」「台中陶瓷貼片費用」三個獨立頁面，以表格呈現費用範圍、包含項目、注意事項。" },
+  { title:"製作 YouTube 衛教影片", desc:"SERP 已有 Video Thumbnail 版位，競爭者極少認真經營。建議製作系列影片（3–5分鐘）：植牙流程完整說明、顯微根管治療不痛嗎、隱適美矯正分享，以目標關鍵字優化標題與描述。" },
+  { title:"建立兒童牙科 / 睡眠牙科利基專頁", desc:"「台中兒童牙醫」KD=0，月搜量200；止鼾牙套目前僅京典美學有服務頁。這兩個利基市場幾乎零競爭，建立專屬服務頁面可快速取得排名。" },
+  { title:"PTT / Dcard 社群口碑佈局", desc:"「台中兒童牙醫推薦ptt」出現在關鍵字列表，社群平台對看診決策影響顯著。主動在 PTT 牙醫板、Dcard 健康版建立口碑討論，同時增加被 AI 工具（ChatGPT、Perplexity）引用的機率。" },
+];
+
+// ── RENDER ─────────────────────────────────────────────────────
+// Traffic chart
+const maxTraffic = Math.max(...competitors.map(c => c.traffic));
+const chartEl = document.getElementById('traffic-chart');
+competitors.sort((a,b) => b.traffic - a.traffic).forEach(c => {
+  const pct = (c.traffic / maxTraffic * 100).toFixed(1);
+  const color = c.third ? 'var(--accent5)' : 'var(--accent)';
+  chartEl.innerHTML += `
+    <div class="bar-row">
+      <div class="bar-label" title="${c.name}">${c.name.replace('診所','').replace('牙醫','牙醫')}</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${pct}%;background:${color}">${c.traffic > 500 ? c.traffic.toLocaleString() : ''}</div>
+      </div>
+      <div class="bar-val">${c.traffic.toLocaleString()}</div>
+    </div>`;
+});
+
+// SERP table
+const serpTbody = document.getElementById('serp-tbody');
+competitors.sort((a,b) => a.rank - b.rank).forEach(c => {
+  const topClass = c.rank <= 3 ? 'top3' : '';
+  serpTbody.innerHTML += `<tr>
+    <td><span class="rank-badge ${topClass}">${c.rank}</span></td>
+    <td>
+      <div class="clinic-name">${c.name} ${c.third ? '<span class="tag-third">第三方</span>' : ''}</div>
+      <a class="url-link" href="${c.url}" target="_blank">${c.url.replace('https://','').replace(/\/$/,'')}</a>
+    </td>
+    <td>
+      <div class="dr-bar">
+        <div class="dr-track"><div class="dr-fill" style="width:${c.dr}%"></div></div>
+        <span>${c.dr}</span>
+      </div>
+    </td>
+    <td>${c.backlinks.toLocaleString()}</td>
+    <td><span class="traffic-num">${c.traffic.toLocaleString()}</span></td>
+    <td style="font-size:12px;color:var(--text-dim)">${c.topKw}</td>
+    <td style="font-size:12px;color:var(--text-dim)">${c.pos}</td>
+  </tr>`;
+});
+
+// Keywords table
+const kwTbody = document.getElementById('kw-tbody');
+keywords.forEach(k => {
+  let kdClass = k.kd <= 0 ? 'kd-low' : k.kd <= 35 ? 'kd-low' : k.kd <= 50 ? 'kd-mid' : 'kd-high';
+  let kdLabel = k.kd === 0 ? '0 ✨' : k.kd;
+  kwTbody.innerHTML += `<tr>
+    <td style="font-weight:600">${k.kw}</td>
+    <td style="font-variant-numeric:tabular-nums">${k.vol.toLocaleString()}</td>
+    <td><span class="kd-pill ${kdClass}">${kdLabel}</span></td>
+    <td>${k.cpc}</td>
+    <td style="color:var(--accent2);font-weight:600">${k.tp || '-'}</td>
+    <td style="font-size:12px">${k.priority}</td>
+    <td style="font-size:12px;color:var(--text-dim)">${k.note}</td>
+  </tr>`;
+});
+
+// Diff opps
+const diffGrid = document.getElementById('diff-grid');
+diffOpps.forEach(o => {
+  diffGrid.innerHTML += `<div class="opp-card">
+    <div class="opp-num">機會 ${o.n}</div>
+    <div class="opp-title">${o.title}</div>
+    <div class="opp-body">${o.body}</div>
+    <span class="opp-tag ${o.tagClass}">${o.tag}</span>
+  </div>`;
+});
+
+const gapGrid = document.getElementById('gap-grid');
+gapOpps.forEach(o => {
+  gapGrid.innerHTML += `<div class="opp-card">
+    <div class="opp-num">缺口 ${o.n}</div>
+    <div class="opp-title">${o.title}</div>
+    <div class="opp-body">${o.body}</div>
+    <span class="opp-tag ${o.tagClass}">${o.tag}</span>
+  </div>`;
+});
+
+// Actions
+const actionList = document.getElementById('action-list');
+actions.forEach((a, i) => {
+  actionList.innerHTML += `<li class="action-item">
+    <div class="action-num">${i+1}</div>
+    <div class="action-content">
+      <div class="action-title">${a.title}</div>
+      <div class="action-desc">${a.desc}</div>
+    </div>
+  </li>`;
+});
+
+// ── TABS ───────────────────────────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
